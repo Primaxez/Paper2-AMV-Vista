@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/listview2_screen.dart';
+import 'package:flutter_application/screens/listview2_screen.dart';
 
 void main() => runApp(MyApp());
 
