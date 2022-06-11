@@ -1,14 +1,17 @@
 import 'dart:async';
 
-const PRODUCTOS = ['Microfono','Parlante', 'Teclado', 'Camara'];
+import 'package:flutter_application/doctor.dart';
+
+const DOCTORES = ['Microfono','Parlante', 'Teclado', 'Camara'];
+final DOCTORES2 = [Doctor('Carlos', 'Fernandez'), Doctor('Miguel', 'Cuadrado'), Doctor('Alejandro', 'Pestana'),Doctor('Vicente', 'Mirabal')];
 
 class DoctoresBloc {
   
-  Stream<List<String>> get getDoctores async* {
+  Stream<List<Doctor>> get getDoctores async* {
 
-    final List<String> doctores = [];
+    final List<Doctor> doctores = [];
 
-    for (String doctor in PRODUCTOS){
+    for (Doctor doctor in DOCTORES2){
       await Future.delayed(const Duration(seconds: 2));
       doctores.add(doctor);
       yield doctores;
@@ -21,16 +24,12 @@ class DoctoresBloc {
 
   ProductosBloc(){
     this.getDoctores.listen(
-      (productosList)=> this._doctoresContador.add(productosList.length)
-      );
+      (doctores)=> this._doctoresContador.add(doctores.length)
+    );
   }
-
 
   dispose(){
 
     _doctoresContador.close();
   }
-
-
-
 }
