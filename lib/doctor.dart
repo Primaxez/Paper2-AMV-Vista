@@ -1,8 +1,17 @@
-class Doctor{
+class Doctor {
 
-  String nombre;
-  String apellido;
+    int id;
+    String nombre;
+    String apellido;
+    String genero;
+    dynamic imagen;
 
-   Doctor(this.nombre, this.apellido);
+    Doctor({
+        required this.id,
+        required this.nombre,
+        required this.apellido,
+        required this.genero,
+        required this.imagen,
+    });
 
-}
+ }

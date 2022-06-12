@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/doctor.dart';
 
 import 'bloc/doctores_bloc.dart';
+import 'models/doctores_response.dart';
 
 
 class DoctoresLista extends StatelessWidget {

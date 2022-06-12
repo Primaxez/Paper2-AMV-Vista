@@ -19,6 +19,6 @@ class HomePage extends StatelessWidget {
                 icon: Icon(Icons.search_outlined))
           ],
         ),
-        body: EspecialidadesLista());
+        body: DoctoresLista());
   }
 }
