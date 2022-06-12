@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'package:flutter_application/doctor.dart';
+import 'package:flutter_application/models/models.dart';
 
 
 const DOCTORES = ['Microfono','Parlante', 'Teclado', 'Camara'];
 final DOCTORES2 = [Doctor(id: 1, nombre: 'Alejandro', apellido: 'Pestana', genero: 'M', imagen: null)];
-
+//Future ListaDoctores = DoctorResponse.fetchDoctores();
 class DoctoresBloc {
   
   Stream<List<Doctor>> get getDoctores async* {

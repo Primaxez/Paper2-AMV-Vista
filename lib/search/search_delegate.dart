@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application/doctor_lis.dart';
+import 'package:flutter_application/search/listadoctores.dart';
 
 import '../bloc/doctores_bloc.dart';
 
@@ -37,7 +38,7 @@ class DoctorSearchDelegate extends SearchDelegate{
       );
     }
 
-    return DoctoresLista();
+    return ListaDoctores();
   }
 
   @override
@@ -51,7 +52,7 @@ class DoctorSearchDelegate extends SearchDelegate{
       );
     }
 
-    return DoctoresLista();
+    return ListaDoctores();
 
   }
 

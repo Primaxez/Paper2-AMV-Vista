@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/screens/especialidades_lista.dart';
+import 'package:flutter_application/search/listadoctores.dart';
 import 'package:flutter_application/search/search_delegate.dart';
 
 import '../bloc/doctores_bloc.dart';
@@ -19,6 +20,10 @@ class HomePage extends StatelessWidget {
                 icon: Icon(Icons.search_outlined))
           ],
         ),
-        body: DoctoresLista());
+        //body: ListaDoctores());
+        body: ListaDoctores()
+     );
+         //body: EspecialidadesLista());
   }
 }
+
