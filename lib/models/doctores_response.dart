@@ -29,8 +29,9 @@ class DoctorResponse {
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
   static Future<List<DoctorResponse>> fetchDoctores(String especialidad) async {
-    String url =  especialidad;
-    final response = await http.get(Uri.parse(especialidad));
+    var url = 'http://10.0.2.2:3000/doctor/get/e/' + especialidad;
+    final response = await http.get(Uri.parse(url));
+    print(url);
     if (response.statusCode == 200) {
       List<DoctorResponse> list = parseDoctores(response.body);
       return list;
