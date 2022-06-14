@@ -7,7 +7,7 @@ import '../models/doctores_response.dart';
 class DoctoresProvider extends ChangeNotifier {
   DoctoresProvider() {
     print('DoctoresProviders inicializado');
-    this.getOnDisplayDoctores();
+    //this.getOnDisplayDoctores();
   }
 
   // getOnDisplayDoctores() async {
