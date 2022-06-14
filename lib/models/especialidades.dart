@@ -21,6 +21,15 @@ class Especialidades {
     }
   }
 
+  static List<Especialidades> parseEspecialidadesLista(List<dynamic> response) {
+    List<Especialidades> list = [];
+
+    for (var item in response) {
+      list.add(Especialidades(id: item['id'], nombre: item['nombre']));
+    }
+    return list;
+  }
+
   static List<Especialidades> parseEspecialidades(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
     return parsed
