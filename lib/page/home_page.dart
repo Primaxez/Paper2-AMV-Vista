@@ -29,30 +29,30 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Doctores'),
-          actions: [
-            // IconButton(
-            //     onPressed: () => showSearch(
-            //         context: context, delegate: DoctorSearchDelegate()),
-            //     icon: Icon(Icons.search_outlined)),
-            Center(child: DropdownButton(
+    return  const Scaffold(
+        // appBar: AppBar(
+        //   title: const Text('Doctores'),
+        //   actions: [
+        //     // IconButton(
+        //     //     onPressed: () => showSearch(
+        //     //         context: context, delegate: DoctorSearchDelegate()),
+        //     //     icon: Icon(Icons.search_outlined)),
+        //     Center(child: DropdownButton(
               
-              items: items.map((String a ){ 
-                return  DropdownMenuItem(
-                  value: items,
-                  child: Text(a),
-                  );}).toList(),
-              onChanged: (value)=>setState(() {
-                opcionPorDefecto = 'NuevoEstado';
-                //dropdownCallBack(value);
+        //       items: items.map((String a ){ 
+        //         return  DropdownMenuItem(
+        //           value: items,
+        //           child: Text(a),
+        //           );}).toList(),
+        //       onChanged: (value)=>setState(() {
+        //         opcionPorDefecto = 'NuevoEstado';
+        //         //dropdownCallBack(value);
 
-              }),
-              hint: Text(opcionPorDefecto),)
-              ) 
-          ],
-        ),
+        //       }),
+        //       hint: Text(opcionPorDefecto),)
+        //       ) 
+        //   ],
+        // ),
         //body: ListaDoctores());
         body: ListaDoctores()
      );

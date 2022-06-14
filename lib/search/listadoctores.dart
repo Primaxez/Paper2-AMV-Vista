@@ -25,15 +25,15 @@ class _ListaDoctoresState extends State<ListaDoctores> {
                   value: items,
                   child: Text(a),
                   );}).toList(), 
-                      onChanged:(a)=>setState(() {
-                    especialidad = 'Ginecologia';
+                  onChanged:(a)=>setState(() {
+                    especialidad = 'ginecologia';
                 //dropdownCallBack(value);
 
               }),
                       hint: Text(opcionPorDefecto))],
         ),
         body: FutureBuilder(
-            future: DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/'+especialidad),
+            future: DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/e/'+especialidad),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
