@@ -13,7 +13,8 @@ class DoctoresProvider extends ChangeNotifier {
   getOnDisplayDoctores() async {
     const url = 'http://10.0.2.2:3000/doctor/get/';
     final response = await http.get(Uri.parse(url));
-    Future ListaDoctores = DoctorResponse.fetchDoctores();
+    print('Hellooo');
+    //Future ListaDoctores = DoctorResponse.fetchDoctores('Cardiologia');
     //final doctorResponse =DoctorResponse.fromMap(response.body);
     // List<DoctorResponse> list = parseDoctores(response.body);
   }
