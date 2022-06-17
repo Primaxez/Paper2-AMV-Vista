@@ -11,7 +11,7 @@ class ListaDoctores extends StatefulWidget {
 
 class _ListaDoctoresState extends State<ListaDoctores> {
   //final items = ['Cardiologia', 'Ginecologia', 'Oftalmologia'];
-  final items = [Especialidades(id: 1, nombre: 'Cardiologia'),Especialidades(id: 2, nombre: 'Ginecologia'), Especialidades(id: 3, nombre: 'Oftalmologia') ];
+  final items = [Especialidades(id: 0, nombre: '...'),Especialidades(id: 1, nombre: 'Cardiologia'),Especialidades(id: 2, nombre: 'Ginecologia'), Especialidades(id: 3, nombre: 'Oftalmologia') ];
  //final items= Especialidades.fetchEspecialidades();
   String opcionPorDefecto = 'Especialidad';
   String? especialidad = '';
@@ -28,9 +28,16 @@ class _ListaDoctoresState extends State<ListaDoctores> {
                             child: Text(a.nombre),
                             );}).toList(), 
                     onChanged:(Especialidades? a)=>setState(() {
-                                                  e = 'e/';
-                                        especialidad =  a?.nombre;
-                                        opcionPorDefecto = especialidad!;
+                                        if(a?.nombre =='...'){
+                                            especialidad ='';
+                                            e = '';
+                                             opcionPorDefecto = 'Especialidad';
+                                        }else{
+                                            e = 'e/';
+                                            especialidad =  a?.nombre;
+                                            opcionPorDefecto = especialidad!;
+                                        }
+                                                  
                                         
                 //dropdownCallBack(value);
                                 }),
