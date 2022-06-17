@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/doctores_response.dart';
+import 'package:flutter_application/models/especialidades.dart';
 
 class ListaDoctores extends StatefulWidget {
   const ListaDoctores({Key? key}) : super(key: key);
@@ -9,29 +10,30 @@ class ListaDoctores extends StatefulWidget {
 }
 
 class _ListaDoctoresState extends State<ListaDoctores> {
-  final items = ['Cardiologia', 'Ginecologia', 'Oftalmologia'];
+  //final items = ['Cardiologia', 'Ginecologia', 'Oftalmologia'];
+  final items = [Especialidades(id: 1, nombre: 'Cardiologia'),Especialidades(id: 2, nombre: 'Ginecologia'), Especialidades(id: 3, nombre: 'Oftalmologia') ];
   String opcionPorDefecto = 'Especialidad';
-  String especialidad = 'cardiologia';
+  String? especialidad = 'cardiologia';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Doctores'),
-          actions: [DropdownButton(
-                      items: items.map((String a ){ 
-                return  DropdownMenuItem(
-                  value: items,
-                  child: Text(a),
-                  );}).toList(), 
-                  onChanged:(a)=>setState(() {
-                    especialidad = 'ginecologia';
+          actions: [DropdownButton<Especialidades>(
+                    items: items.map<DropdownMenuItem<Especialidades>>((Especialidades a ){ 
+                          return  DropdownMenuItem<Especialidades>(
+                            value: a,
+                            child: Text(a.nombre),
+                            );}).toList(), 
+                    onChanged:(Especialidades? a)=>setState(() {
+                                        especialidad = a?.nombre;
+                                        opcionPorDefecto = especialidad!;
                 //dropdownCallBack(value);
-
-              }),
-                      hint: Text(opcionPorDefecto))],
+                                }),
+                    hint: Text(opcionPorDefecto))],
         ),
         body: FutureBuilder(
-            future: DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/e/'+especialidad),
+            future: DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/e/'+especialidad!),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
