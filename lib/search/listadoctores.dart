@@ -12,8 +12,10 @@ class ListaDoctores extends StatefulWidget {
 class _ListaDoctoresState extends State<ListaDoctores> {
   //final items = ['Cardiologia', 'Ginecologia', 'Oftalmologia'];
   final items = [Especialidades(id: 1, nombre: 'Cardiologia'),Especialidades(id: 2, nombre: 'Ginecologia'), Especialidades(id: 3, nombre: 'Oftalmologia') ];
+ //final items= Especialidades.fetchEspecialidades();
   String opcionPorDefecto = 'Especialidad';
-  String? especialidad = 'cardiologia';
+  String? especialidad = '';
+  String? e = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +28,16 @@ class _ListaDoctoresState extends State<ListaDoctores> {
                             child: Text(a.nombre),
                             );}).toList(), 
                     onChanged:(Especialidades? a)=>setState(() {
-                                        especialidad = a?.nombre;
+                                                  e = 'e/';
+                                        especialidad =  a?.nombre;
                                         opcionPorDefecto = especialidad!;
+                                        
                 //dropdownCallBack(value);
                                 }),
                     hint: Text(opcionPorDefecto))],
         ),
         body: FutureBuilder(
-            future: DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/e/'+especialidad!),
+            future: DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/'+e!+especialidad!),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
