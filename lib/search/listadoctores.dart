@@ -76,13 +76,19 @@ class _ListaDoctoresCompleta extends StatelessWidget {
         itemCount: doctores.length,
         itemBuilder: (BuildContext context, int index) {
           final doctor = doctores[index];
+          String generoDr;
+          if(doctor.genero == 'M'){
+            generoDr ='Dr. ';
+          }else{
+              generoDr ='Dra. ';
+          }
           return ListTile(
             leading: Container(
                 child: CircleAvatar(
               backgroundImage: MemoryImage(doctor.imagen),
               maxRadius: 30,
             )),
-            title: Text('${doctor.nombre}'),
+            title: Text(generoDr+'${doctor.nombre}'),
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
           );
         });
