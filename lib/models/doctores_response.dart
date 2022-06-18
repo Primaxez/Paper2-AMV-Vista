@@ -6,6 +6,7 @@
 import 'package:flutter_application/models/especialidades.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter_application/doctor.dart';
 
@@ -22,14 +23,14 @@ class DoctorResponse {
   String nombre;
   String apellido;
   String genero;
-  dynamic imagen;
+  Uint8List imagen;
   List<Especialidades> especialidades;
   // factory DoctorResponse.fromJson(String str) => DoctorResponse.fromMap(json.decode(str));
 
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
   static Future<List<DoctorResponse>> fetchDoctores(String especialidad) async {
-    String url =  especialidad;
+    String url = especialidad;
     final response = await http.get(Uri.parse(especialidad));
     print(url);
     if (response.statusCode == 200) {
@@ -56,13 +57,20 @@ class DoctorResponse {
     return result;
   }
 
+  static blobToImage(dynamic json) {
+    List<int> list = json["data"].cast<int>();
+    Uint8List image = Uint8List.fromList(list);
+    print(image);
+    return image;
+  }
+
   factory DoctorResponse.fromJson(Map<dynamic, dynamic> json) {
     return DoctorResponse(
         id: json["id"],
         nombre: json["nombre"],
         apellido: json["apellido"],
         genero: json["genero"],
-        imagen: json['imagen'],
+        imagen: blobToImage(json["imagen"]),
         especialidades:
             Especialidades.parseEspecialidadesLista(json["especialidades"]));
   }
