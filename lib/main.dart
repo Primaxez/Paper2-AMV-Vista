@@ -3,6 +3,7 @@ import 'package:flutter_application/models/especialidades.dart';
 import 'package:flutter_application/page/home_page.dart';
 
 import 'package:flutter_application/providers/doctores_provider.dart';
+import 'package:flutter_application/providers/especialidades_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'bloc/doctores_bloc.dart';
@@ -17,6 +18,7 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_)=> DoctoresProvider(), lazy: false),
+        ChangeNotifierProvider(create: (_)=> EspecialidadesProvider(), lazy: false),
       ],
       child: MyApp(),
       );

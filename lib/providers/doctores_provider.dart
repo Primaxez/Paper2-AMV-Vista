@@ -17,7 +17,7 @@ class DoctoresProvider extends ChangeNotifier {
      print('Hellooo');
     Future ListaDoctores = DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/');
     Future ListaEpecialidades = Especialidades.fetchEspecialidades();
-    print(ListaEpecialidades.toString());
+    print(ListaEpecialidades);
     //final doctorResponse =DoctorResponse.fromMap(response.body);
      // List<DoctorResponse> list = parseDoctores(response.body);
    }

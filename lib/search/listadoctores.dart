@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/doctores_response.dart';
 import 'package:flutter_application/models/especialidades.dart';
+import 'package:flutter_application/providers/especialidades_provider.dart';
+import 'package:provider/provider.dart';
 
 class ListaDoctores extends StatefulWidget {
   const ListaDoctores({Key? key}) : super(key: key);
@@ -10,19 +12,15 @@ class ListaDoctores extends StatefulWidget {
 }
 
 class _ListaDoctoresState extends State<ListaDoctores> {
-  //final items = ['Cardiologia', 'Ginecologia', 'Oftalmologia'];
-  final items = [
-    Especialidades(id: 0, nombre: '...'),
-    Especialidades(id: 1, nombre: 'Cardiologia'),
-    Especialidades(id: 2, nombre: 'Ginecologia'),
-    Especialidades(id: 3, nombre: 'Oftalmologia')
-  ];
-  //final items= Especialidades.fetchEspecialidades();
+
+ 
   String opcionPorDefecto = 'Especialidad';
   String? especialidad = '';
   String? e = '';
   @override
   Widget build(BuildContext context) {
+    final especialidadesProvider = Provider.of<EspecialidadesProvider>(context);
+    final items = especialidadesProvider.especialidadesDisponibles;
     return Scaffold(
         appBar: AppBar(
           title: Text('Doctores'),
@@ -46,7 +44,7 @@ class _ListaDoctoresState extends State<ListaDoctores> {
                         opcionPorDefecto = especialidad!;
                       }
 
-                      //dropdownCallBack(value);
+                      
                     }),
                 hint: Text(opcionPorDefecto))
           ],
