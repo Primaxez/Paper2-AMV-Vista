@@ -63,4 +63,19 @@ class DoctorResponse {
         especialidades:
             Especialidades.parseEspecialidadesLista(json["especialidades"]));
   }
+
+  String getEspecialidadesdeDoctor(){
+
+    String especialidades='';
+    
+    for(var i in this.especialidades){
+      especialidades = especialidades + i.nombre+ ', ';
+    }
+    final pos = especialidades.length - 2;
+    final resultado =  especialidades.substring(0,pos) + '.';
+    
+    return resultado;
+
+
+  }
 }

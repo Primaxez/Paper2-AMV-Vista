@@ -82,7 +82,8 @@ class _ListaDoctoresCompleta extends StatelessWidget {
               backgroundImage: NetworkImage(doctor.imagen),
               maxRadius: 30,
             )),
-            title: Text(generoDr + '${doctor.nombre}'),
+            title: Text(generoDr + '${doctor.nombre}' + ' ' + '${doctor.apellido}'),
+            subtitle:Text(doctor.getEspecialidadesdeDoctor()) ,
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
           );
         });
