@@ -12,8 +12,6 @@ class ListaDoctores extends StatefulWidget {
 }
 
 class _ListaDoctoresState extends State<ListaDoctores> {
-
- 
   String opcionPorDefecto = 'Especialidad';
   String? especialidad = '';
   String? e = '';
@@ -43,8 +41,6 @@ class _ListaDoctoresState extends State<ListaDoctores> {
                         especialidad = a?.nombre;
                         opcionPorDefecto = especialidad!;
                       }
-
-                      
                     }),
                 hint: Text(opcionPorDefecto))
           ],
@@ -75,18 +71,18 @@ class _ListaDoctoresCompleta extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           final doctor = doctores[index];
           String generoDr;
-          if(doctor.genero == 'M'){
-            generoDr ='Dr. ';
-          }else{
-              generoDr ='Dra. ';
+          if (doctor.genero == 'M') {
+            generoDr = 'Dr. ';
+          } else {
+            generoDr = 'Dra. ';
           }
           return ListTile(
             leading: Container(
                 child: CircleAvatar(
-              backgroundImage: MemoryImage(doctor.imagen),
+              backgroundImage: NetworkImage(doctor.imagen),
               maxRadius: 30,
             )),
-            title: Text(generoDr+'${doctor.nombre}'),
+            title: Text(generoDr + '${doctor.nombre}'),
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
           );
         });

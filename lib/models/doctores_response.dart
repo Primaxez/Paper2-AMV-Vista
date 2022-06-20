@@ -8,8 +8,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:flutter_application/doctor.dart';
-
 class DoctorResponse {
   DoctorResponse(
       {required this.id,
@@ -23,16 +21,14 @@ class DoctorResponse {
   String nombre;
   String apellido;
   String genero;
-  Uint8List imagen;
+  String imagen;
   List<Especialidades> especialidades;
   // factory DoctorResponse.fromJson(String str) => DoctorResponse.fromMap(json.decode(str));
 
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
   static Future<List<DoctorResponse>> fetchDoctores(String especialidad) async {
-    String url = especialidad;
     final response = await http.get(Uri.parse(especialidad));
-    print(url);
     if (response.statusCode == 200) {
       List<DoctorResponse> list = parseDoctores(response.body);
       return list;
@@ -57,20 +53,13 @@ class DoctorResponse {
     return result;
   }
 
-  static blobToImage(dynamic json) {
-    List<int> list = json["data"].cast<int>();
-    Uint8List image = Uint8List.fromList(list);
-    print(image);
-    return image;
-  }
-
   factory DoctorResponse.fromJson(Map<dynamic, dynamic> json) {
     return DoctorResponse(
         id: json["id"],
         nombre: json["nombre"],
         apellido: json["apellido"],
         genero: json["genero"],
-        imagen: blobToImage(json["imagen"]),
+        imagen: json["imagen"],
         especialidades:
             Especialidades.parseEspecialidadesLista(json["especialidades"]));
   }

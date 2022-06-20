@@ -11,16 +11,17 @@ class DoctoresProvider extends ChangeNotifier {
     this.getOnDisplayDoctores();
   }
 
-   getOnDisplayDoctores() async {
-     //const url = 'http://10.0.2.2:3000/doctor/get/';
+  getOnDisplayDoctores() async {
+    //const url = 'http://10.0.2.2:3000/doctor/get/';
     //final response = await http.get(Uri.parse(url));
-     print('Hellooo');
-    Future ListaDoctores = DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/');
+    print('Hellooo');
+    Future ListaDoctores =
+        DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/');
     Future ListaEpecialidades = Especialidades.fetchEspecialidades();
     print(ListaEpecialidades);
     //final doctorResponse =DoctorResponse.fromMap(response.body);
-     // List<DoctorResponse> list = parseDoctores(response.body);
-   }
+    // List<DoctorResponse> list = parseDoctores(response.body);
+  }
 
   // Await the http get response, then decode the json-formatted response.
 
