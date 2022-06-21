@@ -26,6 +26,8 @@ Necesitas un emulador para correr la vista. Puedes descargar e instalar [Android
 
 # Ejecución de la Vista
 
+Primero que nada debes tener [el servicio y la base de datos](https://github.com/Primaxez/Paper2-AMV-Servicio) activos.
+
 Si utilizas un emulador, actívalo y ejecuta el siguiente comando:
 
 ```
