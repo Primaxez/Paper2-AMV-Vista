@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/models/doctores_response.dart';
 import 'package:flutter_application/models/especialidades.dart';
+import 'package:flutter_application/page/detalles_doctor.dart';
 import 'package:flutter_application/providers/especialidades_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -85,6 +86,13 @@ class _ListaDoctoresCompleta extends StatelessWidget {
             title: Text(generoDr + '${doctor.nombre}' + ' ' + '${doctor.apellido}'),
             subtitle:Text(doctor.getEspecialidadesdeDoctor()) ,
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
+            onTap:(){
+
+              final route= MaterialPageRoute(builder: (context)=> DetallesDoctor(doctor: doctor) );
+              Navigator.push(context, route);
+
+
+            } ,
           );
         });
   }
