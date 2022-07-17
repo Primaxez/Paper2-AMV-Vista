@@ -60,7 +60,7 @@ class SolicitarCitaFormState extends State<SolicitarCitaForm> {
                 hint: Text(opcionporDefecto)
                ),
                ElevatedButton(
-                    onPressed: citaForm.isloading ? null : () async{
+                    onPressed: citaForm.isloading || opcionporDefecto=='Especialidad' ? null : () async{
                       if(citaForm.esSolicitudValida()){
                           citaForm.isloading = true;
                           //VALIDAR SI LA SOLICITUD DE LA CITA ES VALIDA
