@@ -84,11 +84,11 @@ class _ListaDoctoresCompleta extends StatelessWidget {
               maxRadius: 30,
             )),
             title: Text(generoDr + '${doctor.nombre}' + ' ' + '${doctor.apellido}'),
-            subtitle:Text(doctor.getEspecialidadesdeDoctor()) ,
+            subtitle:Text(doctor.getEspecialidadesToString()) ,
             trailing: const Icon(Icons.arrow_forward_ios_outlined),
             onTap:(){
 
-              final route= MaterialPageRoute(builder: (context)=> DetallesDoctor(doctor: doctor) );
+              final route= MaterialPageRoute(builder: (context)=>  DetallesDoctor(doctor: doctor,) );
               Navigator.push(context, route);
 
 

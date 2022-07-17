@@ -64,7 +64,7 @@ class DoctorResponse {
             Especialidades.parseEspecialidadesLista(json["especialidades"]));
   }
 
-  String getEspecialidadesdeDoctor(){
+  String getEspecialidadesToString(){
 
     String especialidades='';
     
@@ -78,4 +78,12 @@ class DoctorResponse {
 
 
   }
+
+
+List<Especialidades> getespecialidades(){
+  return this.especialidades;
 }
+
+}
+
+
