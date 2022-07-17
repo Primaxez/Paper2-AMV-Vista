@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/page/home_page.dart';
 import 'package:flutter_application/search/listadoctores.dart';
 
 import 'detalles_doctor.dart';
@@ -48,9 +49,9 @@ class ResultadoSolicitudCita extends StatelessWidget {
                     SizedBox(height: 120,),
                     ElevatedButton(
                       onPressed:  () {                                    
-                        final route= MaterialPageRoute(builder: (context)=>  DoctoresPage() );                 
+                        final route= MaterialPageRoute(builder: (context)=>  HomePage() );                 
                           //VALIDAR SI LA SOLICITUD DE LA CITA ES VALIDA                   
-                          Navigator.push(context, route);
+                          Navigator.pushAndRemoveUntil(context,route, (route) => false);
                       },  
                       child:  Text('Regresar'),
                       style: ElevatedButton.styleFrom(
