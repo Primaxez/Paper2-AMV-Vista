@@ -40,7 +40,7 @@ class CitaNoSolicitada extends StatelessWidget {
                     children: [
                       Row(
                         children: [Icon( icon ,color:color, size: 70 ,),
-                        Text(resultado, style: TextStyle(fontSize: 40, color:color),),
+                        Text(resultado, style: TextStyle(fontSize: 35, color:color),),
                         ],
                       ),
                      Text(mensaje, style: TextStyle(fontSize: 20, color:color),),

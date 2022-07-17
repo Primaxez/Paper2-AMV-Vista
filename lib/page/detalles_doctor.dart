@@ -65,12 +65,7 @@ class CustomAppBar  extends StatelessWidget{
 class _FotoNombre extends StatelessWidget {
 
   DoctorResponse doctor;
-
-  
-
   _FotoNombre({Key? key,  required this.doctor}) : super(key: key);
- 
-
   @override
   Widget build(BuildContext context) {
 
@@ -112,11 +107,8 @@ class _FotoNombre extends StatelessWidget {
 
             ],
           )
-
         ],
       ),
-
-      
     );
   }
 }
@@ -177,7 +169,7 @@ class _SolicitarCitaFormState extends State<_SolicitarCitaForm> {
 
                           citaForm.isloading = true;
                           //VALIDAR SI LA SOLICITUD DE LA CITA ES VALIDA
-                          String result = 'CITA SOLICITADA';
+                          String result = 'CITA NO SOLICITADA ';
                           final route= MaterialPageRoute(builder: (context)=>  CitaNoSolicitada(resultado: result,) );
                           await Future.delayed(Duration(seconds: 2));
                           
