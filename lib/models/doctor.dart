@@ -8,8 +8,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:typed_data';
 
-class DoctorResponse {
-  DoctorResponse(
+class Doctor {
+  Doctor(
       {required this.id,
       required this.nombre,
       required this.apellido,
@@ -23,25 +23,25 @@ class DoctorResponse {
   String genero;
   String imagen;
   List<Especialidades> especialidades;
-  // factory DoctorResponse.fromJson(String str) => DoctorResponse.fromMap(json.decode(str));
+  // factory Doctor.fromJson(String str) => Doctor.fromMap(json.decode(str));
 
   List<Object?> get props => [id, nombre, apellido, genero, imagen];
 
-  static Future<List<DoctorResponse>> fetchDoctores(String especialidad) async {
+  static Future<List<Doctor>> fetchDoctores(String especialidad) async {
     final response = await http.get(Uri.parse(especialidad));
     if (response.statusCode == 200) {
-      List<DoctorResponse> list = parseDoctores(response.body);
+      List<Doctor> list = parseDoctores(response.body);
       return list;
     } else {
       throw Exception('Error al Cargar Especialidades');
     }
-    //final doctorResponse =DoctorResponse.fromMap(response.body);
+    //final doctorResponse =Doctor.fromMap(response.body);
   }
 
-  static List<DoctorResponse> parseDoctores(String responseBody) {
+  static List<Doctor> parseDoctores(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
     return parsed
-        .map<DoctorResponse>((json) => DoctorResponse.fromJson(json))
+        .map<Doctor>((json) => Doctor.fromJson(json))
         .toList();
   }
 
@@ -53,8 +53,8 @@ class DoctorResponse {
     return result;
   }
 
-  factory DoctorResponse.fromJson(Map<dynamic, dynamic> json) {
-    return DoctorResponse(
+  factory Doctor.fromJson(Map<dynamic, dynamic> json) {
+    return Doctor(
         id: json["id"],
         nombre: json["nombre"],
         apellido: json["apellido"],

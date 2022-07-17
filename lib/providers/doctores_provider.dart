@@ -3,7 +3,7 @@ import 'package:flutter_application/models/especialidades.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../models/doctores_response.dart';
+import '../models/doctor.dart';
 
 class DoctoresProvider extends ChangeNotifier {
   DoctoresProvider() {
@@ -16,11 +16,11 @@ class DoctoresProvider extends ChangeNotifier {
     //final response = await http.get(Uri.parse(url));
     print('Hellooo');
     Future ListaDoctores =
-        DoctorResponse.fetchDoctores('http://10.0.2.2:3000/doctor/get/');
+        Doctor.fetchDoctores('http://10.0.2.2:3000/doctor/get/');
     Future ListaEpecialidades = Especialidades.fetchEspecialidades();
     print(ListaEpecialidades);
-    //final doctorResponse =DoctorResponse.fromMap(response.body);
-    // List<DoctorResponse> list = parseDoctores(response.body);
+    //final doctorResponse =Doctor.fromMap(response.body);
+    // List<Doctor> list = parseDoctores(response.body);
   }
 
   // Await the http get response, then decode the json-formatted response.

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/models/doctores_response.dart';
+import 'package:flutter_application/models/doctor.dart';
 import 'package:flutter_application/models/especialidades.dart';
 
 
@@ -7,7 +7,7 @@ class SolicitudCitaProvider extends ChangeNotifier {
 
   GlobalKey<FormState>  formKey = new GlobalKey<FormState>();
 
-  DoctorResponse? doctor;
+  Doctor? doctor;
   Especialidades? especialidad;
   int pacienteID =0;
   

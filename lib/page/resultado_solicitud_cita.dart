@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application/search/listadoctores.dart';
 
 import 'detalles_doctor.dart';
+import 'doctores_page.dart';
 
-class CitaNoSolicitada extends StatelessWidget {
-  CitaNoSolicitada({ Key? key, required this.resultado }) : super(key: key);
+class ResultadoSolicitudCita extends StatelessWidget {
+  ResultadoSolicitudCita({ Key? key, required this.resultado }) : super(key: key);
   
   
   String resultado;
@@ -47,7 +48,7 @@ class CitaNoSolicitada extends StatelessWidget {
                     SizedBox(height: 120,),
                     ElevatedButton(
                       onPressed:  () {                                    
-                        final route= MaterialPageRoute(builder: (context)=>  ListaDoctores() );                 
+                        final route= MaterialPageRoute(builder: (context)=>  DoctoresPage() );                 
                           //VALIDAR SI LA SOLICITUD DE LA CITA ES VALIDA                   
                           Navigator.push(context, route);
                       },  

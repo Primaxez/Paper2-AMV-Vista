@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application/models/doctores_response.dart';
+import 'package:flutter_application/models/doctor.dart';
 import 'package:flutter_application/models/especialidades.dart';
 import 'package:flutter_application/page/detalles_doctor.dart';
 import 'package:flutter_application/providers/especialidades_provider.dart';
+import 'package:flutter_application/search/search_delegate.dart';
 import 'package:provider/provider.dart';
 
-class ListaDoctores extends StatefulWidget {
-  const ListaDoctores({Key? key}) : super(key: key);
+class DoctoresPage extends StatefulWidget {
+  const DoctoresPage({Key? key}) : super(key: key);
 
   @override
-  State<ListaDoctores> createState() => _ListaDoctoresState();
+  State<DoctoresPage> createState() => _DoctoresPage();
 }
 
-class _ListaDoctoresState extends State<ListaDoctores> {
+class _DoctoresPage extends State<DoctoresPage> {
   String opcionPorDefecto = 'Especialidad';
   String? especialidad = '';
   String? e = '';
@@ -24,6 +25,7 @@ class _ListaDoctoresState extends State<ListaDoctores> {
         appBar: AppBar(
           title: Text('Doctores'),
           actions: [
+            
             DropdownButton<Especialidades>(
                 items: items
                     .map<DropdownMenuItem<Especialidades>>((Especialidades a) {
@@ -43,17 +45,23 @@ class _ListaDoctoresState extends State<ListaDoctores> {
                         opcionPorDefecto = especialidad!;
                       }
                     }),
-                hint: Text(opcionPorDefecto))
+                hint: Text(opcionPorDefecto)
+                ),
+             IconButton(
+              onPressed: ()=> showSearch(context: context, delegate: DoctorSearchDelegate()), 
+              icon: Icon(Icons.search_outlined)
+              ),
+
           ],
         ),
         body: FutureBuilder(
-            future: DoctorResponse.fetchDoctores(
+            future: Doctor.fetchDoctores(
                 'http://10.0.2.2:3000/doctor/get/' + e! + especialidad!),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
               } else {
-                return _ListaDoctoresCompleta(snapshot.data);
+                return ListaDoctores(snapshot.data);
               }
 
               ;
@@ -61,10 +69,10 @@ class _ListaDoctoresState extends State<ListaDoctores> {
   }
 }
 
-class _ListaDoctoresCompleta extends StatelessWidget {
-  final List<DoctorResponse> doctores;
+class ListaDoctores extends StatelessWidget {
+  final List<Doctor> doctores;
 
-  _ListaDoctoresCompleta(this.doctores);
+  ListaDoctores(this.doctores);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

@@ -1,10 +1,13 @@
 import 'dart:async';
-import 'package:flutter_application/doctor.dart';
+
+import 'package:flutter_application/models/especialidades.dart';
 import 'package:flutter_application/models/models.dart';
+
+import '../models/doctor.dart';
 
 
 const DOCTORES = ['Microfono','Parlante', 'Teclado', 'Camara'];
-final DOCTORES2 = [Doctor(id: 1, nombre: 'Alejandro', apellido: 'Pestana', genero: 'M', imagen: null)];
+final DOCTORES2 = [Doctor(id: 1, nombre: 'Alejandro', apellido: 'Pestana', genero: 'M', imagen: '', especialidades: [Especialidades(id: 1, nombre: 'Cardiologia')])];
 //Future ListaDoctores = DoctorResponse.fetchDoctores();
 class DoctoresBloc {
   

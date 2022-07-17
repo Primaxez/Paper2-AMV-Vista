@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/search/listadoctores.dart';
 import '../bloc/doctores_bloc.dart';
+import 'doctores_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -22,6 +23,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: ListaDoctores());
+    return const Scaffold(body: DoctoresPage());
   }
 }
